@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--给包中的类注册别名 -->
+    <typeAliases>
+        <package name="pojo"/>
+    </typeAliases>
+    <!-- 配置环境 -->
+    <environments default="development">
+        <!-- 配置一个i为development的环境 -->
+        <environment id="development">
+            <!-- 使用JDBC事务 -->
+            <transactionManager type="JDBC" />
+            <!-- 数据库连接池 -->
+            <dataSource type="POOLED">
+                <!-- 配置数据库信息 -->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <!--useSSL是在mysql5.7之后的版本有的一个协议，开启会身份认证加密等-->
+                <property name="url" value="jdbc:mysql://localhost:3306/web?useSSL=true"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!-- 引用映射文件 -->
+        <package name="mapper"/>
+    </mappers>
+</configuration>

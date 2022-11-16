@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The page</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/main.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css' rel='stylesheet' />       
+    <script src="./js/china.js"></script>
+    </head>
+    <body >
+    <div class="container">
+        <input type="text" class="search" placeholder="杈撳叆璇椾汉鎴栬瘲姝屽悕绉�">
+        <button class="search_btn"></button>
+        <div class="select_container">
+            <img src="./img/earth.png" alt="this is an earth" width="40" height="40" class="select_bkg">
+            <div class="hint">疆域时间:</div>
+            <input type="text" class="select">
+        </div>
+    </div>
+    <div class="poem_container">
+        <div style="position:relative; font-size: large; left: 10px; top: 10px">诗歌类型</div>
+        <hr style="position: relative; top: 7px;" color="#ECECEC">
+        <ul>
+            <li>
+                <img src="./img/园林.png" alt="鐏炶鲸鎸夌拠锟�?" style="position: relative; left: 10px; top: 3px; margin-bottom: 0px;">
+                <button>山水诗</button>
+            </li>
+            <li>
+                <img src="./img/山水.png" alt="闁汇垺婢樺ú顖滄嫚閿燂拷?" style="position: relative; left: 10px; top: 3px; margin-bottom: 5px;">
+                <button>送别诗</button>
+            </li>
+            <li>
+                <img src="./img/山水1.png" alt="闁硅埖甯楅崕蹇曟嫚閿燂拷?" style="position: relative; left: 10px; top: 3px; margin-bottom: 5px;">
+                <button>哀情诗</button>
+            </li>
+            <li>
+                <img src="./img/鲜花.png" alt="闁硅埖甯楅崕蹇曟嫚閿燂拷?" style="position: relative; left: 10px; top: 3px; margin-bottom: 5px;">
+                <button>思乡诗</button>
+            </li>
+            <li>
+                <img src="./img/山水.png" alt="闁硅埖甯楅崕蹇曟嫚閿燂拷?" style="position: relative; left: 10px; top: 3px; margin-bottom: 5px;">
+                <button>抒情诗</button>
+            </li>
+            <li>
+                <img src="./img/鲜花.png" alt="闁硅埖甯楅崕蹇曟嫚閿燂拷?" style="position: relative; left: 10px; top: 3px; margin-right: 5px;">
+                <button>哀情诗</button>
+            </li>
+            <li>
+                <img src="./img/园林.png" alt="闁硅埖甯楅崕蹇曟嫚閿燂拷?" style="position: relative; left: 10px; top: 3px; margin-right: 0px;">
+                <button>哀情诗</button>
+            </li>
+        </ul>
+    </div>
+    </div>
+
+        <div id='map' style='width: 100%; height: 700px;'></div>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoiaGVoYW53ZWkiLCJhIjoiY2xhMGU2NXpkMDRqdjNudDF6d25uOXZyMiJ9.ot97kTBUNLJ1IIRVMaVnoQ';
+            var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/hehanwei/claacxef300kd15phbijdq7xw',
+            center: [102.21823, 33.67381],
+            });
+
+            map.on('load', function () {
+            map.addLayer({
+            'id': 'china',
+            'type': 'fill',
+            'source': {
+                'type': 'geojson',
+                'data': chinaJSON
+            },
+            'layout': {},
+            'paint': {
+                'fill-color': 'red',
+                'fill-opacity': 0.3,
+            }
+            });
+
+
+            // map.addLayer({
+            // 'id': 'chinaline',
+            // 'type': 'line',
+            // 'source': {
+            //   'type': 'geojson',
+            //     'data': chinaJSON
+            // },
+            // 'layout': {},
+            // 'paint': {
+            //     'line-color': 'blue',
+            //     'line-width': 3
+            // }
+            // });
+
+        });
+
+        </script>
+
+
+
+    </body>
+</html>
